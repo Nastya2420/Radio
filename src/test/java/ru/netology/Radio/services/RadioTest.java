@@ -19,14 +19,37 @@ public class RadioTest {
 
     }
 
+    @Test // Следующая радио станция
+    public void switchStation1() {
+        Radio radio = new Radio(17);
+
+        radio.setCurrentStation(15);
+        radio.nextStation();
+
+        int expected = 16;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+
+    }
+
     @Test // выше max
     public void setAboveTheMaximumStation() {
+        Radio radio = new Radio(15);
+
+        radio.setCurrentStation(16);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test // выше max
+    public void setAboveTheMaximumStation1() {
         Radio radio = new Radio();
 
         radio.setCurrentStation(10);
-        radio.nextStation();
 
-        int expected = 10;
+        int expected = 0;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
@@ -36,9 +59,19 @@ public class RadioTest {
         Radio radio = new Radio();
 
         radio.setCurrentStation(-3);
-        radio.prevStation();
 
-        int expected = 9;
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test // ниже min
+    public void setBelowTheMinimumStation1() {
+        Radio radio = new Radio(12);
+
+        radio.setCurrentStation(-1);
+
+        int expected = 0;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
@@ -55,8 +88,20 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test // следующая после max
+    public void nextAfterTheMaximum1() {
+        Radio radio = new Radio(15);
+
+        radio.setCurrentStation(15);
+        radio.nextStation();
+
+        int expected = 1;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
     @Test //  перед min
-    public void nextAfterTheMin() {
+    public void prevAfterTheMin() {
         Radio radio = new Radio();
 
         radio.setCurrentStation(0);
