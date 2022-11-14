@@ -3,22 +3,17 @@ package ru.netology.Radio.services;
 import java.util.Currency;
 
 public class Radio {
-    private int currentStation;
+    private int currentStation = 10;
     private int minStation = 0;
     private int maxStation = 9;
     private int currentVolume;
     private int minVolume = 0;
     private int maxVolume = 100;
 
+    public Radio(){
 
-    public Radio() {
-        this.minStation = minStation;
-        this.maxStation = maxStation;
-        this.currentStation = minStation;
-        this.minVolume = minVolume;
-        this.maxVolume = maxVolume;
-        this.currentVolume = minVolume;
     }
+
 
 
     public int getCurrentStation() {
